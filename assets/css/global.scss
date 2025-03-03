@@ -1,0 +1,22 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  font-family: "RedHatDisplay";
+  font-size: 4.8vw; // 18px
+  @screen sm {
+    font-size: 2.343vw; //18px
+  }
+  @screen lg {
+    font-size: 1.1111vw; // 20px
+  }
+}
+
+:focus {
+  outline: none;
+}
+
+img,
+video {
+  @apply object-cover;
+}

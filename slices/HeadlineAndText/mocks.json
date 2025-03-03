@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"caption": {
+				"__TYPE__": "FieldContent",
+				"value": "ought",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore cupidatat incididunt ea incididunt duis esse mollit qui est laboris est. Esse elit esse sint nostrud quis dolor in non id Lorem sunt esse minim in aute. Ipsum excepteur exercitation ad cupidatat minim consectetur et laborum in elit ut minim."
+						}
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "slowly",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

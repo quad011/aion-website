@@ -53,7 +53,7 @@ onMounted(() => {});
       <c-animated-element v-if="link && link.url" :fromScale="0.1" :toScale="1">
         <PrismicLink :field="link">
           <div
-            class="relative w-[5.4rem] lg:w-[9.4rem] h-[5.4rem] lg:h-[9.4rem]"
+            class="relative w-[5.4rem] lg:w-[9.4rem] h-[5.4rem] lg:h-[9.4rem] lg:hover:scale-90 transition-transform duration-500"
           >
             <c-rotating-element>
               <img src="/svg/curve-text.svg" alt="aion" />

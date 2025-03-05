@@ -1,7 +1,7 @@
 <script setup>
 import { useFormInput } from "vee-validate";
-import vSelect from "vue-select-3";
-import "vue-select-3/dist/vue-select.css";
+// import vSelect from "vue-select-3";
+// import "vue-select-3/dist/vue-select.css";
 
 const props = defineProps({
   name: {

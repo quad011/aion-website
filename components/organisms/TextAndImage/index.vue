@@ -35,7 +35,7 @@ onMounted(() => {});
       <c-animated-element :fromY="50" :toY="0" :delay="0.1">
         <h1
           v-html="title"
-          class="text-40 sm:text-72 lg:text-60 font-bold text-white !leading-[1.1]"
+          class="text-40 sm:text-60 font-bold text-white !leading-[1.1]"
         />
       </c-animated-element>
       <!-- END :: TITLE -->

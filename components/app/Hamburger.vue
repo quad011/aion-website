@@ -65,7 +65,7 @@ const props = defineProps({
   &--is-active {
     .hamburger-box {
       .line {
-        @apply bg-white;
+        @apply bg-darkBlue;
       }
       .line--1 {
         @apply w-full top-2/4;

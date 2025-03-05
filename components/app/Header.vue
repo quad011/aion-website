@@ -55,21 +55,20 @@ onMounted(() => {
     <header
       :class="{
         'app-header--shrink': scrollingStarted,
+        'gradient-drop': !isMenuOpen,
       }"
       class="app-header px-4 lg:px-20 py-4 lg:py-10 fixed top-0 left-0 w-full flex items-start justify-between text-white mix-blend-difference z-[100] pointer-events-none transition-all duration-500"
     >
       <!-- LOGO -->
       <nuxt-link to="/" class="cursor-pointer pointer-events-auto">
-        <img
-          alt="logo"
-          class="logo w-[20vw] sm:w-[12.33vw] object-contain transition-all duration-500"
-          src="/assets/svg/logo.svg"
+        <a-logo
+          :class="`logo w-[20vw] sm:w-[12.33vw] object-contain transition-all duration-500 ${isMenuOpen ? 'fill-darkBlue' : 'fill-white'}`"
         />
       </nuxt-link>
       <!-- END :: LOGO -->
 
       <div class="flex items-center">
-        <div class="hidden lg:flex pointer-events-auto">
+        <div class="hidden lg:flex pointer-events-auto font-medium">
           <nuxt-link to="/" class="mr-5 text-14 lg:text-base">
             <span v-html="'Home'" class="link" />
           </nuxt-link>
@@ -99,12 +98,14 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .app-header {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  &.gradient-drop {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
   &--shrinked {
     @screen lg {
       @apply px-5 py-5;

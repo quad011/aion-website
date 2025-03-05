@@ -1,5 +1,5 @@
 <script setup>
-import { useScrollLock } from '@vueuse/core';
+import { useScrollLock } from "@vueuse/core";
 
 const appStore = useAppStore();
 const { appData, isMenuOpen } = storeToRefs(appStore);
@@ -7,7 +7,7 @@ const { appData, isMenuOpen } = storeToRefs(appStore);
 function scrollToTop() {
   window.scroll({
     top: 0,
-    behavior: 'smooth',
+    behavior: "smooth",
   });
   isMenuOpen.value = false;
 }
@@ -21,13 +21,9 @@ onMounted(() => {
 
 <template>
   <div
-    class="app-menu flex flex-col items-center justify-center backdrop-blur-[24px]"
+    class="app-menu flex flex-col items-center justify-center bg-white text-darkBlue font-medium"
   >
-    <nuxt-link
-      to="/"
-      @click.native="scrollToTop"
-      class="text-14 sm:text-base mb-8"
-    >
+    <nuxt-link to="/" @click.native="scrollToTop" class="text-base mb-8">
       <span v-html="'Home'" class="link" />
     </nuxt-link>
 

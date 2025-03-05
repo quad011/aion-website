@@ -28,10 +28,10 @@
       }
     },
     "Footer": {
-      "footer_text": {
+      "city": {
         "type": "Text",
         "config": {
-          "label": "Footer Text",
+          "label": "City",
           "placeholder": ""
         }
       },
@@ -55,6 +55,28 @@
           "allowTargetBlank": true,
           "allowText": true,
           "repeat": false
+        }
+      }
+    },
+    "Social": {
+      "socials": {
+        "type": "Group",
+        "config": {
+          "label": "Socials",
+          "repeat": true,
+          "fields": {
+            "item": {
+              "type": "Link",
+              "config": {
+                "label": "item",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
         }
       }
     }

@@ -20,6 +20,21 @@ export interface AppDocumentDataMainNavigationItem {
 }
 
 /**
+ * Item in *App → Socials*
+ */
+export interface AppDocumentDataSocialsItem {
+  /**
+   * item field in *App → Socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: app.socials[].item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  item: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Content for App documents
  */
 interface AppDocumentData {
@@ -35,15 +50,15 @@ interface AppDocumentData {
   main_navigation: prismic.GroupField<
     Simplify<AppDocumentDataMainNavigationItem>
   > /**
-   * Footer Text field in *App*
+   * City field in *App*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: app.footer_text
+   * - **API ID Path**: app.city
    * - **Tab**: Footer
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
-  footer_text: prismic.KeyTextField;
+  city: prismic.KeyTextField;
 
   /**
    * Phone field in *App*
@@ -65,7 +80,22 @@ interface AppDocumentData {
    * - **Tab**: Footer
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  mail: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+  mail: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  > /**
+   * Socials field in *App*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: app.socials[]
+   * - **Tab**: Social
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */;
+  socials: prismic.GroupField<Simplify<AppDocumentDataSocialsItem>>;
 }
 
 /**
@@ -884,6 +914,7 @@ declare module "@prismicio/client" {
       AppDocument,
       AppDocumentData,
       AppDocumentDataMainNavigationItem,
+      AppDocumentDataSocialsItem,
       ArticleSolutionDocument,
       ArticleSolutionDocumentData,
       ArticleSolutionDocumentDataSlicesSlice,

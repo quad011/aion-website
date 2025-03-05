@@ -36,7 +36,7 @@ onMounted(() => {});
         <PrismicRichText
           :field="text"
           wrapper="div"
-          class="leading-[1.2] lg:pr-56 mb-52"
+          class="leading-[1.2] lg:pr-56 mb-20 sm:mb-52"
         />
       </c-animated-element>
     </div>
@@ -45,7 +45,7 @@ onMounted(() => {});
       <f-generator
         v-if="!isThankYou"
         class="relative contact-form"
-        buttonWrapperClasses="w-1/3 mt-10"
+        buttonWrapperClasses="w-1/2 lg:w-1/3 mt-10"
         :default-classes="{
           element: 'lg:flex relative',
           errorMessage: 'text-12 absolute top-full left-0 text-red error-msg',

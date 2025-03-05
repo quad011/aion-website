@@ -9,7 +9,7 @@ const props = defineProps({
   },
 });
 
-const scrollToSection = hash => {
+const scrollToSection = (hash) => {
   const element = document.querySelector(hash);
   if (element) {
     const offset = 100;
@@ -18,7 +18,7 @@ const scrollToSection = hash => {
 
     window.scrollTo({
       top: elementPosition - offset,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
 
     history.pushState(null, null, hash);
@@ -32,7 +32,7 @@ const scrollToSection = hash => {
     <nuxt-link
       :to="item.link.url"
       @click.prevent="scrollToSection(item.link.url)"
-      class="mr-5 last:mr-0 text-14 sm:text-base"
+      class="mr-5 last:mr-0 text-base"
     >
       <span v-html="item.link.text" class="link" />
     </nuxt-link>

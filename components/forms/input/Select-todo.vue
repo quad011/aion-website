@@ -154,5 +154,5 @@
 //   /* Transitions */
 //   --vs-transition-timing-function: cubic-bezier(1, -0.115, 0.975, 0.855);
 //   --vs-transition-duration: 150ms;
-}
+// }
 </style>

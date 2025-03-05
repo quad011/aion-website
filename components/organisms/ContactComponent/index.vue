@@ -36,7 +36,7 @@ onMounted(() => {});
         <PrismicRichText
           :field="text"
           wrapper="div"
-          class="leading-[1.2] lg:pr-56 mb-20 sm:mb-52"
+          class="leading-[1.2] lg:pr-56 mb-20 lg:mb-52"
         />
       </c-animated-element>
     </div>

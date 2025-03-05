@@ -13,9 +13,13 @@ onMounted(() => {
 <template>
   <footer class="app-footer overflow-hidden border-t border-black">
     <div class="px-4 py-8 lg:p-16 justify-between">
-      <div class="flex flex-wrap lg:justify-between w-full font-medium">
+      <div class="flex flex-wrap sm:justify-between w-full font-medium">
         <!-- LOGO -->
-        <c-animated-element :fromY="50" :toY="0" class="order-first w-1/2">
+        <c-animated-element
+          :fromY="50"
+          :toY="0"
+          class="order-first w-1/2 sm:w-auto"
+        >
           <nuxt-link
             to="/"
             class="cursor-pointer pointer-events-auto block mb-10 sm:mb-0"
@@ -32,7 +36,7 @@ onMounted(() => {
           :fromY="50"
           :toY="0"
           :delay="0.1"
-          class="order-3 w-1/2"
+          class="order-3 sm:order-2 w-1/2 sm:w-auto"
         >
           <div class="flex flex-col">
             <a
@@ -56,8 +60,13 @@ onMounted(() => {
         <!-- END :: INFO -->
 
         <!-- NAV -->
-        <c-animated-element :fromY="50" :toY="0" :delay="0.2" class="order-2">
-          <div class="flex flex-col mb-10 sm:mb-0 order-2">
+        <c-animated-element
+          :fromY="50"
+          :toY="0"
+          :delay="0.2"
+          class="order-2 sm:order-3"
+        >
+          <div class="flex flex-col mb-10 sm:mb-0">
             <nuxt-link to="/" class="mb-1 text-14 lg:text-base">
               <span v-html="'Home'" class="link" />
             </nuxt-link>

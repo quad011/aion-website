@@ -25,15 +25,16 @@ const scrollToSection = (hash) => {
     isMenuOpen.value = false;
   }
 };
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+};
 </script>
 
 <template>
   <div class="app-menu-item">
-    <nuxt-link
-      :to="item.link.url"
-      @click.prevent="scrollToSection(item.link.url)"
-      class="mr-5 last:mr-0 text-base"
-    >
+    <!-- @click.prevent="scrollToSection(item.link.url)" -->
+    <nuxt-link @click.prevent="closeMenu" :to="item.link.uid" class="text-base">
       <span v-html="item.link.text" class="link" />
     </nuxt-link>
   </div>

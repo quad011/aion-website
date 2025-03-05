@@ -2,14 +2,14 @@ import * as yup from "yup";
 
 export default [
   {
-    class: "row w-full -mx-2",
+    class: "row w-full lg:-mx-2",
     fields: {
       name: {
         model: null,
         rules: yup.string().required("First Name is a required field"),
         label: "First Name*",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
         inputClass: "",
         component: "text",
         type: "text",
@@ -19,7 +19,7 @@ export default [
         rules: yup.string().required("Last Name is a required field"),
         label: "Last Name*",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
         inputClass: "",
         component: "text",
         type: "text",
@@ -29,7 +29,7 @@ export default [
         rules: yup.string().required("Phone is a required field"),
         label: "Phone*",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
         inputClass: "",
         component: "text",
         type: "text",
@@ -42,7 +42,7 @@ export default [
           .email("Email must be a valid format"),
         label: "Email*",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
         inputClass: "",
         component: "text",
         type: "text",

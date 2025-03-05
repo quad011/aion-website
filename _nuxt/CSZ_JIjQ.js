@@ -1,0 +1,1 @@
+import{_ as e}from"./DlAUqK2U.js";import{c as o,o as r}from"./BT3e07J2.js";const n={},c={class:"spinner border-4 border-black rounded-[50%] border-b-transparent inline-block box-border w-[48px] h-[48px]"};function t(s,_){return r(),o("span",c)}const p=e(n,[["render",t],["__scopeId","data-v-44b9f5b6"]]);export{p as default};

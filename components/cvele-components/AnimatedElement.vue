@@ -33,7 +33,9 @@ const props = defineProps({
 });
 
 // Register GSAP plugin
-gsap.registerPlugin(ScrollTrigger);
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const animatedElement = ref(null);
 

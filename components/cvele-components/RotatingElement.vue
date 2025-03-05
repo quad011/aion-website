@@ -5,7 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const props = defineProps({});
 
 // Register GSAP plugin
-gsap.registerPlugin(ScrollTrigger);
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 onMounted(async () => {
   const rotatingText = document.querySelector(".rotating-element");

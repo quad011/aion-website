@@ -1,6 +1,6 @@
 <script setup>
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const props = defineProps({
   fromX: {
@@ -50,24 +50,26 @@ const props = defineProps({
   },
 });
 
-gsap.registerPlugin(ScrollTrigger);
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const main = ref(null);
 let ctx = null;
 
 onMounted(async () => {
   await nextTick();
-  ctx = gsap.context(self => {
-    const items = self.selector('.item');
+  ctx = gsap.context((self) => {
+    const items = self.selector(".item");
 
-    items.forEach(item => {
-      item.style.transform = 'none';
+    items.forEach((item) => {
+      item.style.transform = "none";
       gsap.set(item, {
         x: 0,
         y: 0,
         scale: 1,
         rotation: 0,
-        clearProps: 'transform', // Clears inline styles if needed
+        clearProps: "transform", // Clears inline styles if needed
         force3D: true, // Forces GPU acceleration to avoid flickering
       });
 
@@ -82,7 +84,7 @@ onMounted(async () => {
         {
           x: props.toX,
           y: props.toY,
-          ease: 'none',
+          ease: "none",
           scale: props.toScale,
           immediateRender: true,
           delay: props.delay,
@@ -96,7 +98,7 @@ onMounted(async () => {
             // markers: true,
             pin: props.pin,
           },
-        },
+        }
       );
     });
   }, main.value);

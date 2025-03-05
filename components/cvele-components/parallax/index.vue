@@ -9,7 +9,9 @@ const props = defineProps({
   },
 });
 
-gsap.registerPlugin(ScrollTrigger);
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 onMounted(() => {
   gsap.utils.toArray(".image-container").forEach((container) => {

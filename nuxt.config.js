@@ -46,12 +46,13 @@ export default defineNuxtConfig({
   },
 
   image: {
+    imgix: {
+      baseURL: "https://images.prismic.io/aion-website/",
+    },
     domains: ["images.prismic.io"],
-    provider: "imgix",
   },
 
   router: {
-    base: "/aion-website/",
     options: {
       scrollBehaviorType: "smooth",
     },

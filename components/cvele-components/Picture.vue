@@ -86,6 +86,11 @@ const handleLoad = () => {
   isLoaded.value = true;
 };
 
+const cleanImageUrl = (url) => {
+  if (!url) return "";
+  return url.replace(/^\/(?!\/)/, ""); // Removes only single leading slashes, not protocol slashes
+};
+
 onMounted(() => {
   setTimeout(() => {
     _loading.value = "eager";
@@ -106,7 +111,9 @@ onMounted(() => {
       :imgAttrs="imageAttributes"
       :sizes="sizes"
       :quality="quality"
-      :src="src || image?.url"
+      :src="
+        src ? cleanImageUrl(src) : image?.url ? cleanImageUrl(image.url) : ''
+      "
       :alt="alt || image?.alt"
     />
     <div

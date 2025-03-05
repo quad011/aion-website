@@ -18,14 +18,16 @@ onMounted(() => {});
 </script>
 
 <template>
-  <div class="o-our-solutions px-4 lg:px-20 mb-20 lg:mb-32 overflow-hidden">
+  <div
+    class="o-our-solutions px-4 lg:px-20 mb-20 lg:mb-32 overflow-hidden gradient-top-bottom"
+  >
     <!-- IMAGE -->
     <div
       v-if="image && image.url"
-      class="image-wrapper overflow-hidden aspect-video lg:aspect-[2.3] my-20 rounded-[1.5rem] lg:rounded-[3rem] relative z-10"
+      class="image-wrapper overflow-hidden aspect-video lg:aspect-[2.3] clip-path-rounded my-10 lg:my-20 relative z-10"
     >
       <c-animated-element :fromScale="1.1" :toScale="1" class="h-full">
-        <c-parallax :factor="0.3">
+        <c-parallax :factor="0.3" :rounded="true">
           <c-picture
             class="h-full"
             innerClass=""
@@ -43,7 +45,7 @@ onMounted(() => {});
     >
       <!-- TITLE -->
       <c-animated-element :fromY="50" :toY="0">
-        <h1 v-html="title" class="text-40 sm:text-72 lg:text-92 font-bold" />
+        <h1 v-html="title" class="text-40 sm:text-60 lg:text-92 font-bold" />
       </c-animated-element>
       <!-- END :: TITLE -->
 
@@ -68,12 +70,12 @@ onMounted(() => {});
     </div>
 
     <!-- SOLUTIONS -->
-    <div class="flex flex-col lg:flex-row sm:-mx-5 relative z-10">
+    <div class="flex flex-col sm:flex-row sm:-mx-2 lg:-mx-5 relative z-10">
       <PrismicLink
         v-for="(item, index) in items"
         :key="index"
         :field="item.solution"
-        class="w-full lg:w-1/3 sm:px-5 link-wrapper mb-5 sm:mb-10 lg:mb-0 last:mb-0"
+        class="w-full sm:w-1/3 sm:px-2 lg:px-5 link-wrapper mb-5 sm:mb-0 last:mb-0"
       >
         <c-animated-element :fromY="50" :toY="0" :delay="index / 10">
           <m-box
@@ -105,22 +107,6 @@ onMounted(() => {});
         transform: scale(1.05);
       }
     }
-  }
-}
-</style>
-
-<style lang="scss" scoped>
-.o-our-solutions {
-  @apply relative;
-  &::after {
-    content: "";
-    @apply absolute left-0 top-[10%] lg:top-[20%] w-screen h-full pointer-events-none;
-    background: rgb(218, 232, 254);
-    background: linear-gradient(
-      180deg,
-      rgba(218, 232, 254, 1) 0%,
-      rgba(218, 232, 254, 0) 100%
-    );
   }
 }
 </style>

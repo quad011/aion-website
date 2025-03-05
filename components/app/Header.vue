@@ -62,7 +62,7 @@ onMounted(() => {
       <nuxt-link to="/" class="cursor-pointer pointer-events-auto">
         <img
           alt="logo"
-          class="logo w-[12.33vw] object-contain transition-all duration-500"
+          class="logo w-[20vw] sm:w-[12.33vw] object-contain transition-all duration-500"
           src="/assets/svg/logo.svg"
         />
       </nuxt-link>
@@ -84,9 +84,9 @@ onMounted(() => {
           </nuxt-link>
         </div>
 
-        <div class="flex justify-end lg:hidden ml-5">
+        <div class="flex justify-end lg:hidden">
           <app-hamburger
-            class="flex justify-end mr-2 pointer-events-auto"
+            class="flex justify-end pointer-events-auto"
             :isMenuOpen="isMenuOpen"
             @click="isMenuOpen = !isMenuOpen"
             @keydown.esc="isMenuOpen = false"

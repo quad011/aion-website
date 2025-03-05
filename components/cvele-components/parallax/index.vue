@@ -2,6 +2,13 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const props = defineProps({
+  rounded: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
@@ -28,8 +35,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="parallax image-container relative overflow-hidden w-full h-full">
-    <div class="img w-full h-full">
+  <div
+    :class="`c-parallax image-container relative w-full h-full clip-path-${rounded ? 'rounded' : ''}`"
+  >
+    <div
+      :class="`img w-full h-full overflow-hidden clip-path-${rounded ? 'rounded' : ''}`"
+    >
       <slot />
     </div>
   </div>

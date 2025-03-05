@@ -80,7 +80,7 @@ interface AppDocumentData {
 export type AppDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AppDocumentData>, "app", Lang>;
 
-type ArticleSolutionDocumentDataSlicesSlice = never;
+type ArticleSolutionDocumentDataSlicesSlice = ContactComponentSlice;
 
 /**
  * Content for Article Solution documents
@@ -167,7 +167,9 @@ export type ArticleSolutionDocument<Lang extends string = string> =
     Lang
   >;
 
-type OurSolutionsDocumentDataSlicesSlice = OurSolutionsSlice;
+type OurSolutionsDocumentDataSlicesSlice =
+  | ContactComponentSlice
+  | OurSolutionsSlice;
 
 /**
  * Content for Page: Our Solutions documents
@@ -243,7 +245,7 @@ export type OurSolutionsDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDefaultDocumentDataSlicesSlice = never;
+type PageDefaultDocumentDataSlicesSlice = ContactComponentSlice;
 
 /**
  * Content for Page: Default documents
@@ -320,6 +322,8 @@ export type PageDefaultDocument<Lang extends string = string> =
   >;
 
 type PageHomeDocumentDataSlicesSlice =
+  | ContactComponentSlice
+  | TestimonialsSlice
   | TextAndImageSlice
   | HeadlineAndTextSlice
   | OurSolutionsSlice
@@ -405,6 +409,61 @@ export type AllDocumentTypes =
   | OurSolutionsDocument
   | PageDefaultDocument
   | PageHomeDocument;
+
+/**
+ * Primary content in *ContactComponent → Default → Primary*
+ */
+export interface ContactComponentSliceDefaultPrimary {
+  /**
+   * Title field in *ContactComponent → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_component.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *ContactComponent → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_component.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ContactComponent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactComponentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactComponentSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactComponent*
+ */
+type ContactComponentSliceVariation = ContactComponentSliceDefault;
+
+/**
+ * ContactComponent Shared Slice
+ *
+ * - **API ID**: `contact_component`
+ * - **Description**: ContactComponent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactComponentSlice = prismic.SharedSlice<
+  "contact_component",
+  ContactComponentSliceVariation
+>;
 
 /**
  * Primary content in *HeadlineAndText → Default → Primary*
@@ -627,6 +686,96 @@ export type OurSolutionsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Testimonials → Default → Primary → Items*
+ */
+export interface TestimonialsSliceDefaultPrimaryItemsItem {
+  /**
+   * Image field in *Testimonials → Default → Primary → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default.primary.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Text field in *Testimonials → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default.primary.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Name field in *Testimonials → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default.primary.items[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Testimonials → Default → Primary*
+ */
+export interface TestimonialsSliceDefaultPrimary {
+  /**
+   * Title field in *Testimonials → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Items field in *Testimonials → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<TestimonialsSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Testimonials Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TestimonialsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Testimonials*
+ */
+type TestimonialsSliceVariation = TestimonialsSliceDefault;
+
+/**
+ * Testimonials Shared Slice
+ *
+ * - **API ID**: `testimonials`
+ * - **Description**: Testimonials
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSlice = prismic.SharedSlice<
+  "testimonials",
+  TestimonialsSliceVariation
+>;
+
+/**
  * Primary content in *TextAndImage → Default → Primary*
  */
 export interface TextAndImageSliceDefaultPrimary {
@@ -748,6 +897,10 @@ declare module "@prismicio/client" {
       PageHomeDocumentData,
       PageHomeDocumentDataSlicesSlice,
       AllDocumentTypes,
+      ContactComponentSlice,
+      ContactComponentSliceDefaultPrimary,
+      ContactComponentSliceVariation,
+      ContactComponentSliceDefault,
       HeadlineAndTextSlice,
       HeadlineAndTextSliceDefaultPrimary,
       HeadlineAndTextSliceVariation,
@@ -761,6 +914,11 @@ declare module "@prismicio/client" {
       OurSolutionsSliceDefaultPrimary,
       OurSolutionsSliceVariation,
       OurSolutionsSliceDefault,
+      TestimonialsSlice,
+      TestimonialsSliceDefaultPrimaryItemsItem,
+      TestimonialsSliceDefaultPrimary,
+      TestimonialsSliceVariation,
+      TestimonialsSliceDefault,
       TextAndImageSlice,
       TextAndImageSliceDefaultPrimary,
       TextAndImageSliceVariation,

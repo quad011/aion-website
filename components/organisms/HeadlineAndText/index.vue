@@ -19,7 +19,7 @@ const props = defineProps({
     <div class="lg:w-2/3 lg:pr-10 mb-10">
       <!-- TITLE -->
       <c-animated-element :fromY="50" :toY="0">
-        <h2 v-html="title" class="text-32 lg:text-92 font-bold" />
+        <h2 v-html="title" class="text-40 sm:text-60 lg:text-92 font-bold" />
       </c-animated-element>
       <!-- END :: TITLE -->
     </div>

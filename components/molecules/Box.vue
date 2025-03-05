@@ -19,7 +19,7 @@ const colorConfig = {
 </script>
 
 <template>
-  <div class="m-box rounded-[1.5rem] sm:rounded-[3rem] overflow-hidden">
+  <div class="m-box rounded-[1.5rem] lg:rounded-[3rem] overflow-hidden">
     <div class="flex aspect-[1.49] overflow-hidden">
       <c-picture
         class="image h-full"
@@ -31,11 +31,11 @@ const colorConfig = {
     </div>
 
     <div
-      :class="`px-5 md:px-10 lg:px-7 pb-5 md:pb-10 lg:pb-7 pt-16 lg:pt-24 ${colorConfig[index % 3]?.class}`"
+      :class="`px-5 lg:px-7 pb-5 lg:pb-7 pt-16 lg:pt-24 ${colorConfig[index % 3]?.class}`"
     >
       <a-arrow-link
         :title="title"
-        :innerClass="'text-32 sm:text-44 font-medium'"
+        :innerClass="'text-32 sm:text-base lg:text-32 2xl:text-44 font-medium'"
       />
     </div>
   </div>

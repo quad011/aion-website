@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "way",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nostrud elit ex ut consectetur pariatur tempor. Tempor sunt velit duis. Dolore anim ut est id quis do non officia reprehenderit occaecat et commodo velit."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

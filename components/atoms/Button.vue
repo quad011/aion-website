@@ -11,6 +11,10 @@ const props = defineProps({
   linkUrl: {
     type: String,
   },
+  submitBtn: {
+    type: Boolean,
+    default: false,
+  },
 });
 onMounted(() => {
   const buttons = gsap.utils.toArray(".a-button");
@@ -29,13 +33,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <a
+  <component
+    :is="linkUrl ? 'a' : 'button'"
     :href="linkUrl"
     target="_blank"
     :class="`a-button bg-${btnBg} px-5 lg:px-12 py-3 lg:py-5 flex items-center justify-center pointer-events-auto overflow-hidden rounded-full`"
   >
     <p v-html="title" class="text-14 lg:text-base text-white font-bold" />
-  </a>
+  </component>
 </template>
 
 <style lang="scss" scoped>

@@ -31,6 +31,20 @@ export default defineNuxtConfig({
     },
   },
 
+  imports: {
+    dirs: [
+      "composables",
+      "composables/forms",
+      "server/utils",
+      "server/api/form",
+    ],
+  },
+
+  buildModules: ["@nuxtjs/proxy"],
+  proxy: {
+    "/api": "http://localhost:3000",
+  },
+
   components: componentsConfig,
 
   css: ["@/assets/css/main.scss", "@/assets/css/tailwind.scss"],

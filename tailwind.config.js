@@ -33,6 +33,7 @@ export default {
         lightBlue: "#68B7FF",
         darkBlue: "#1A2766",
         lightGreen: "#38CADA",
+        red: "#ff1808",
       },
 
       fontFamily: {

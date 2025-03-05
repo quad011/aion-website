@@ -20,3 +20,29 @@ img,
 video {
   @apply object-cover;
 }
+
+.clip-path-rounded {
+  clip-path: inset(0 round 1.5rem);
+  @screen lg {
+    clip-path: inset(0 round 3rem);
+  }
+}
+
+.gradient-top-bottom {
+  @apply relative;
+  &--0 {
+    &::after {
+      @apply top-0 #{!important};
+    }
+  }
+  &::after {
+    content: "";
+    @apply absolute left-0 top-[10%] lg:top-[20%] w-screen h-full pointer-events-none;
+    background: rgb(218, 232, 254);
+    background: linear-gradient(
+      180deg,
+      rgba(218, 232, 254, 1) 0%,
+      rgba(218, 232, 254, 0) 100%
+    );
+  }
+}

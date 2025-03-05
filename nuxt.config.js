@@ -45,6 +45,18 @@ export default defineNuxtConfig({
     "/api": "http://localhost:3000",
   },
 
+  image: {
+    domains: ["images.prismic.io"],
+    provider: "imgix",
+  },
+
+  router: {
+    base: "/aion-website/",
+    options: {
+      scrollBehaviorType: "smooth",
+    },
+  },
+
   components: componentsConfig,
 
   css: ["@/assets/css/main.scss", "@/assets/css/tailwind.scss"],

@@ -45,12 +45,12 @@ export default defineNuxtConfig({
   //   "/api": "http://localhost:3000",
   // },
 
-  // image: {
-  //   imgix: {
-  //     baseURL: "https://images.prismic.io/aion-website/",
-  //   },
-  //   domains: ["images.prismic.io"],
-  // },
+  image: {
+    imgix: {
+      baseURL: "https://images.prismic.io/aion-website/",
+    },
+    domains: ["images.prismic.io"],
+  },
 
   router: {
     options: {

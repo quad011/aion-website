@@ -34,7 +34,11 @@ usePageMeta(page);
 
 <template>
   <div>
-    <h1>{{ page.data?.title || "Article Not Found" }}</h1>
+    <o-hero-header
+      :title="page.data?.title"
+      :background_image="page.data?.featured_image"
+      :lettersDecor="false"
+    />
     <SliceZone :slices="page?.data?.slices || []" />
     <AppFooter />
   </div>

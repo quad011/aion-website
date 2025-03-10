@@ -7,6 +7,8 @@ const { appData, fontsLoaded, isMenuOpen } = storeToRefs(appStore);
 const scrollingStore = useScrollingStore();
 const { navigationVisible, scrollingStarted } = storeToRefs(scrollingStore);
 
+const { linkResolver } = useLinkResolver();
+
 function scrollToTop() {
   window.scroll({
     top: 0,
@@ -19,24 +21,24 @@ function scrollToTop() {
   }, 500); // Delay to allow smooth scrolling
 }
 
-const scrollToSection = (hash) => {
-  const element = document.querySelector(hash);
-  if (element) {
-    const offset = 100;
-    const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY;
+// const scrollToSection = (hash) => {
+//   const element = document.querySelector(hash);
+//   if (element) {
+//     const offset = 100;
+//     const elementPosition =
+//       element.getBoundingClientRect().top + window.scrollY;
 
-    window.scrollTo({
-      top: elementPosition - offset,
-      behavior: "smooth",
-    });
+//     window.scrollTo({
+//       top: elementPosition - offset,
+//       behavior: "smooth",
+//     });
 
-    history.pushState(null, null, hash);
-  }
-};
+//     history.pushState(null, null, hash);
+//   }
+// };
 
 onMounted(() => {
-  // console.log("appData", appData);
+  console.log("appdata", appData);
   window.addEventListener("scroll", () => {
     if (window.scrollY === 0) {
       history.pushState(null, null, window.location.pathname);
@@ -73,14 +75,14 @@ onMounted(() => {
             <span v-html="'Home'" class="link" />
           </nuxt-link>
 
-          <nuxt-link
+          <PrismicLink
             v-for="item in appData?.data?.main_navigation"
             :key="item.key"
-            :to="item.link.uid"
+            :to="linkResolver(item.link)"
             class="mr-5 last:mr-0 text-14 lg:text-base"
           >
             <span v-html="item.link.text" class="link" />
-          </nuxt-link>
+          </PrismicLink>
         </div>
 
         <div class="flex justify-end lg:hidden">

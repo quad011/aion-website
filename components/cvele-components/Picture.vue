@@ -105,9 +105,9 @@ onMounted(() => {
       :key="_loading"
       :loading="_loading"
       :densities="densities"
-      :class="(innerClass, { 'image-loaded': isLoaded })"
-      @load="handleLoad"
       class="c-picture block relative h-full w-full"
+      :class="[innerClass, { 'image-loaded': isLoaded }]"
+      @load="handleLoad"
       :imgAttrs="imageAttributes"
       :sizes="sizes"
       :quality="quality"
@@ -126,15 +126,20 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-c-picture-wrapper {
+.c-picture-wrapper {
   .c-picture {
     img {
       @apply object-cover;
       transition: opacity 0.3s ease;
-      opacity: 0;
     }
-    .image-loaded {
+    &.image-loaded {
       opacity: 1;
+    }
+    &.overlay {
+      &::after {
+        content: "";
+        @apply absolute left-0 top-0 w-full h-full bg-black opacity-30;
+      }
     }
   }
 }

@@ -3,19 +3,22 @@ import componentsConfig from "./config/nuxt/components";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  // hooks: {
+  //   "pages:extend"(pages) {
+  //     console.log("Nuxt pages:", pages);
+  //   },
+  // },
+
   runtimeConfig: {
     EMAIL_USER: process.env.EMAIL_USER,
     EMAIL_PASS: process.env.EMAIL_PASS,
-    public: {
-      EMAIL_USER: process.env.NUXT_PUBLIC_EMAIL_USER, // only public ones go here
-    },
   },
 
   prismic: {
     endpoint: apiEndpoint || repositoryName,
+
     clientConfig: {
       routes: [
-        // Resolves the Homepage document to "/"
         {
           type: "page_home",
           path: "/",

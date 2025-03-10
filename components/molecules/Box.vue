@@ -35,7 +35,7 @@ const colorConfig = {
     >
       <a-arrow-link
         :title="title"
-        :innerClass="'text-32 sm:text-base lg:text-32 2xl:text-44 font-medium'"
+        :innerClass="'text-32 sm:text-base lg:text-32 2xl:text-44 font-medium !leading-[1.2]'"
       />
     </div>
   </div>

@@ -39,7 +39,7 @@ const handleFormSuccess = (message) => {
         <PrismicRichText
           :field="text"
           wrapper="div"
-          class="leading-[1.2] lg:pr-56 mb-20 lg:mb-0"
+          class="leading-[1.2] lg:pr-56 mb-20 lg:mb-0 text-base"
         />
       </c-animated-element>
     </div>
@@ -62,7 +62,7 @@ const handleFormSuccess = (message) => {
 
         <div
           v-if="successMessage"
-          class="text-32 absolute center w-full h-full flex justify-center items-center bg-darkBlue transition-all duration-500"
+          class="text-32 absolute center text-center w-full h-full flex justify-center items-center bg-darkBlue transition-all duration-500"
         >
           Thank you for your message!
         </div>

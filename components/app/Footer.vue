@@ -5,6 +5,8 @@ import { storeToRefs } from "pinia";
 const appStore = useAppStore();
 const { appData } = storeToRefs(appStore);
 
+const { linkResolver } = useLinkResolver();
+
 onMounted(() => {
   // console.log("appStoreeeeee", appData);
 });
@@ -42,7 +44,7 @@ onMounted(() => {
             <a
               :href="`http://maps.google.co.in/maps?q=${appData?.data?.city}`"
               target="_blank"
-              class="text-14 lg:text-base link reversed my-1"
+              class="text-14 lg:text-base link reversed"
               >{{ appData?.data?.city }}</a
             >
             <a
@@ -71,14 +73,14 @@ onMounted(() => {
               <span v-html="'Home'" class="link" />
             </nuxt-link>
 
-            <nuxt-link
+            <PrismicLink
               v-for="item in appData?.data?.main_navigation"
               :key="item.key"
-              :to="item.link.uid"
+              :to="linkResolver(item.link)"
               class="mb-1 last:mb-0 text-14 lg:text-base"
             >
               <span v-html="item.link.text" class="link" />
-            </nuxt-link>
+            </PrismicLink>
           </div>
         </c-animated-element>
         <!-- NED :: NAV -->

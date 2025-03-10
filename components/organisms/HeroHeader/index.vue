@@ -11,6 +11,10 @@ const props = defineProps({
   background_image: {
     type: Object,
   },
+  lettersDecor: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const heroHeight = ref("100vh");
@@ -33,7 +37,7 @@ onMounted(() => {
         <c-parallax :factor="0.3">
           <c-picture
             class="h-full"
-            innerClass=""
+            :innerClass="!lettersDecor ? 'overlay' : ''"
             :image="background_image"
             sizes="sm:375px md:768px lg:1920px xl:2200px"
             :alt="background_image?.alt || 'aion'"
@@ -50,15 +54,15 @@ onMounted(() => {
       <c-animated-element :fromY="50" :toY="0">
         <h1
           v-html="title"
-          class="text-40 sm:text-72 lg:text-180 font-bold mb-5"
+          class="text-60 sm:text-72 lg:text-180 font-bold mb-5 md:mb-0"
         />
       </c-animated-element>
       <!-- END :: TITLE -->
 
       <!-- CONTACT BTN -->
-      <div class="w-1/2 sm:w-1/3">
+      <div class="w-1/2 sm:w-1/3" v-if="link && link.url">
         <c-animated-element :fromY="50" :toY="0" :delay="0.1">
-          <a-button :title="link.text" :linkUrl="link.url" />
+          <a-button :title="link?.text" :linkUrl="link?.url" />
         </c-animated-element>
       </div>
       <!-- END :: CONTACT BTN -->
@@ -66,6 +70,7 @@ onMounted(() => {
 
     <!-- LETTERS -->
     <c-animated-element
+      v-if="lettersDecor"
       v-for="(letter, index) in letters"
       :key="index"
       :delay="index / 5"

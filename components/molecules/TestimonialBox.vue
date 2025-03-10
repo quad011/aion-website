@@ -31,7 +31,7 @@ const props = defineProps({
       <PrismicRichText
         :field="text"
         wrapper="div"
-        class="text-base md:text-14 xl:text-32"
+        class="text-base xl:text-32"
       />
       <p v-html="name" class="font-bold mt-4" />
     </div>

@@ -35,7 +35,7 @@ onMounted(() => {});
       <c-animated-element :fromY="50" :toY="0" :delay="0.1">
         <h1
           v-html="title"
-          class="text-40 sm:text-60 font-bold text-white !leading-[1.1]"
+          class="text-40 sm:text-50 xl:text-60 font-bold text-white !leading-[1.1]"
         />
       </c-animated-element>
       <!-- END :: TITLE -->
@@ -45,7 +45,7 @@ onMounted(() => {});
         <PrismicRichText
           :field="text"
           wrapper="div"
-          class="text-white font-bold mt-8 leading-[1.2]"
+          class="text-white font-bold mt-8 leading-[1.2] lg:text-base"
         />
       </c-animated-element>
 

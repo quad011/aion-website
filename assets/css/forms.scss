@@ -26,20 +26,20 @@ input:-webkit-autofill:active {
     }
   }
 
-  // label {
-  //   @apply text-16 font-medium;
+  label {
+    @apply text-16 font-medium;
 
-  //   position: absolute;
-  //   left: 0.5rem;
-  //   top: 50%;
-  //   transform: translateY(-100%);
-  //   transition:
-  //     top 0.2s,
-  //     font-size 0.2s;
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-100%);
+    transition:
+      top 0.2s,
+      font-size 0.2s;
 
-  //   &.active {
-  //     @apply text-14;
-  //     top: -20%;
-  //   }
-  // }
+    &.active {
+      @apply text-14;
+      top: -10%;
+    }
+  }
 }

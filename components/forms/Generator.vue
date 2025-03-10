@@ -49,6 +49,23 @@ const submitForm = async (values, { resetForm }) => {
     isSubmitting.value = false;
   }
 };
+
+const focusedField = ref(null);
+const inputValues = ref({});
+
+const handleFocus = (fieldName) => {
+  focusedField.value = fieldName;
+};
+
+const handleBlur = (fieldName) => {
+  if (!inputValues.value[fieldName]) {
+    focusedField.value = null;
+  }
+};
+
+const updateValue = (fieldName, event) => {
+  inputValues.value[fieldName] = event.target.value;
+};
 </script>
 
 <template>
@@ -60,8 +77,20 @@ const submitForm = async (values, { resetForm }) => {
         :key="name"
         :class="elementClass"
       >
-        <label :for="name">{{ label }}</label>
-        <Field :as="as" :id="name" :name="name" v-bind="attrs" />
+        <label
+          :for="name"
+          :class="{ active: focusedField === name || inputValues[name] }"
+          >{{ label }}</label
+        >
+        <Field
+          :as="as"
+          :id="name"
+          :name="name"
+          v-bind="attrs"
+          @focus="handleFocus(name)"
+          @blur="handleBlur(name)"
+          @input="updateValue(name, $event)"
+        />
         <ErrorMessage
           :name="name"
           class="text-14 absolute left-2 top-full text-red"

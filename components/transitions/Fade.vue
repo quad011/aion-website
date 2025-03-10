@@ -50,6 +50,8 @@ const leave = (el, onComplete) => {
     onComplete,
   });
 };
+
+onMounted(() => {});
 </script>
 
 <template>

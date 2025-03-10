@@ -1,4 +1,5 @@
 <script setup>
+const { linkResolver } = usePrismic();
 const props = defineProps({
   title: {
     type: String,
@@ -75,6 +76,7 @@ onMounted(() => {});
         v-for="(item, index) in items"
         :key="index"
         :field="item.solution"
+        :link-resolver="linkResolver"
         class="w-full sm:w-1/3 sm:px-2 lg:px-5 link-wrapper mb-5 sm:mb-0 last:mb-0"
       >
         <c-animated-element :fromY="50" :toY="0" :delay="index / 10">

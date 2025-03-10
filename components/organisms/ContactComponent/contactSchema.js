@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 export default [
   {
-    class: "row w-full md:-mx-2",
+    class: "row w-full sm:-mx-2",
     fields: [
       {
         label: "First Name",
@@ -10,7 +10,7 @@ export default [
         as: "input",
         type: "text",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full sm:w-1/2 mb-10 sm:px-2",
         inputClass: "",
         rules: yup.string().required("First Name is a required field"),
       },
@@ -20,7 +20,7 @@ export default [
         as: "input",
         type: "text",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full sm:w-1/2 mb-10 sm:px-2",
         inputClass: "",
         rules: yup.string().required("Last Name is a required field"),
       },
@@ -30,7 +30,7 @@ export default [
         as: "input",
         type: "text",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full sm:w-1/2 mb-10 sm:px-2",
         inputClass: "",
         rules: yup
           .number("Phone must be a number")
@@ -44,7 +44,7 @@ export default [
         as: "input",
         type: "email",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        elementClass: "flex flex-col relative w-full sm:w-1/2 mb-10 sm:px-2",
         inputClass: "",
         rules: yup
           .string()
@@ -57,7 +57,7 @@ export default [
         as: "textarea",
         type: "textarea",
         placeholder: "",
-        elementClass: "flex flex-col relative w-full mb-8 px-2",
+        elementClass: "flex flex-col relative w-full mb-10 sm:px-2",
         inputClass: "",
       },
     ],

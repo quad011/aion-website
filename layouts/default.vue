@@ -17,7 +17,7 @@ onMounted(() => {});
     <!-- END :: APP HEADER -->
 
     <!-- PAGE CONTENT -->
-    <t-fade :mode="'out-in'" :delay="0.15">
+    <t-fade :delay="0.15" :duration="3">
       <slot />
     </t-fade>
     <!-- END :: PAGE CONTENT -->

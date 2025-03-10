@@ -1,77 +1,105 @@
-import { sendEmail } from "@/server/utils/sendEmail";
-import form_schema from "@/components/organisms/ContactComponent/contactSchema.js";
+import nodemailer from "nodemailer";
 
-const LOG_NAME = `[api.form.contact]`;
+// export default defineEventHandler(async (event) => {
+//   try {
+//     // Get form data (name, email, etc.)
+//     const body = await readBody(event);
 
-const validateForm = (formData) => {
-  try {
-    // Validate the form data using Yup
-    Object.keys(formData).forEach((field) => {
-      const schema = form_schema[0].fields[field]?.rules;
-      if (schema) {
-        schema.validateSync(formData[field]);
-      }
-    });
-    console.log("Validation passed!");
-    return true;
-  } catch (error) {
-    console.error("Validation error: ", error.message);
-    return false;
-  }
-};
+//     // Configure the email transporter
+//     const transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         user: process.env.EMAIL_USER,
+//         pass: process.env.EMAIL_PASS,
+//       },
+//     });
+
+//     // Email options
+//     const mailOptions = {
+//       from: "Aion website info@aionbpo.com", // Ensure this is the correct value
+//       to: "quad011@hotmail.com",
+//       subject: "New Form Submission",
+//       text: `New Contact Form Submission Details:\n\n
+//         Name: ${body.name}\n
+//         Last Name: ${body.lastname}\n
+//         Phone: ${body.phone}\n
+//         Email: ${body.email}\n
+//         Message: ${body.message}`,
+//     };
+
+//     // Send email
+//     const info = await transporter.sendMail(mailOptions);
+
+//     // If we reach here, email was sent successfully
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify({
+//         success: true,
+//         message: "Email sent successfully!",
+//         emailResponse: info, // Log the response data for debugging
+//       }),
+//     };
+//   } catch (error) {
+//     console.error("Error sending email:", error);
+//     return {
+//       statusCode: 500,
+//       body: JSON.stringify({
+//         success: false,
+//         message: "Failed to send email",
+//         error: error.message,
+//       }),
+//     };
+//   }
+// });
 
 export default defineEventHandler(async (event) => {
-  let success = false;
-
   try {
-    const formData = await readBody(event);
-    console.log("formData", formData);
-    const subject = `New Form Submission: [Contact] - ${formData.name}`;
+    console.log("✅ API endpoint hit");
 
-    // Define recipient email — either from form data or a fixed email address
-    const recipientEmail = "quad011@hotmail.com";
+    // Read form data from the request
+    const body = await readBody(event);
+    console.log("Form Data:", body);
 
-    // create a field -> label map
-    const labelMap = getLabelMap(form_schema);
-    // generate html table with form data
-    const htmlTable = generateHtmlDataTable(formData, labelMap);
+    // Nodemailer transporter setup
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-    // Validate form data
-    validateForm(formData);
+    // Email options
+    const mailOptions = {
+      from: `"Aion website" <${process.env.EMAIL_USER}>`,
+      to: "quad011@hotmail.com",
+      subject: "New Form Submission",
+      text: `
+        New Contact Form Submission Details:\n\n
+        Name: ${body.name}\n
+        Last Name: ${body.lastname}\n
+        Phone: ${body.phone}\n
+        Email: ${body.email}\n
+        Message: ${body.message}
+      `,
+    };
 
-    let html = `
-      <h2>${subject}</h2>
-      <p>This message has been sent from <strong>Aion website</strong></p>
-      ${htmlTable}
-    `;
+    console.log("Sending email...");
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info);
 
-    // Send email
-    const clientEmail = await sendEmail(html, recipientEmail, subject);
-
-    if (clientEmail[0]?.status === "sent") {
-      success = true;
-      setResponseStatus(event, 200);
-
-      return {
-        status: success,
-        data: clientEmail[0],
-      };
-    } else {
-      console.log("Email failed to send", success, clientEmail);
-
-      return {
-        status: success,
-        data: clientEmail[0],
-      };
-    }
+    // Ensure a proper JSON response
+    return {
+      success: true,
+      message: "Email sent successfully!",
+    };
   } catch (error) {
-    console.error(`${LOG_NAME} ERROR:`, error); // Log the error
-    if (error.statusCode === 422) {
-      console.error(`${LOG_NAME} Unprocessable Entity:`, error.data);
-      throw createError({ statusCode: 422, message: error.message });
-    } else {
-      console.error(`${LOG_NAME} Internal Server Error:`, error);
-      throw createError({ statusCode: 500, message: "Internal Server Error" }); // Ensure error gets logged
-    }
+    console.error("❌ Error sending email:", error);
+    setResponseStatus(event, 500);
+    return {
+      success: false,
+      message: "Failed to send email",
+      error: error.message,
+    };
   }
 });

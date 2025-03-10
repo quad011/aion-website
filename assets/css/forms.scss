@@ -19,34 +19,27 @@ input:-webkit-autofill:active {
   }
   textarea {
     border-bottom: 1px solid theme("colors.white");
-    @apply bg-transparent text-16 mb-1 mt-5 rounded-none pb-2;
+    @apply bg-transparent text-16 rounded-none pb-2;
     &::placeholder {
       @apply text-16;
       color: theme("colors.white");
     }
   }
 
-  .form-input {
-    label {
-      @apply text-16;
+  // label {
+  //   @apply text-16 font-medium;
 
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-85%);
-      transition:
-        top 0.2s,
-        font-size 0.2s;
+  //   position: absolute;
+  //   left: 0.5rem;
+  //   top: 50%;
+  //   transform: translateY(-100%);
+  //   transition:
+  //     top 0.2s,
+  //     font-size 0.2s;
 
-      &.active {
-        @apply text-14;
-        top: -20%;
-      }
-    }
-  }
-  .form-input--text-area {
-    label {
-      transform: translateY(-150%);
-    }
-  }
+  //   &.active {
+  //     @apply text-14;
+  //     top: -20%;
+  //   }
+  // }
 }

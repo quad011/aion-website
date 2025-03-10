@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import * as prismic from "@prismicio/client";
-import { repositoryName } from "./slicemachine.config.json";
+
+// Correct JSON import
+import { repositoryName } from "@/slicemachine.config.json";
 
 const endpoint = prismic.getRepositoryEndpoint(repositoryName);
 
@@ -10,7 +12,7 @@ export const useAppStore = defineStore("app", {
     appData: {},
     prismicClient: null,
     fontsLoaded: false,
-    isMenuOpen: false
+    isMenuOpen: false,
   }),
 
   getters: {

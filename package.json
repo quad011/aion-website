@@ -25,6 +25,7 @@
     "formidable": "^3.5.2",
     "gsap": "^3.12.7",
     "lodash": "^4.17.21",
+    "nodemailer": "^6.10.0",
     "nuxt": "^3.15.4",
     "nuxt-font-loader": "^2.3.5",
     "nuxt-viewport": "^2.2.0",

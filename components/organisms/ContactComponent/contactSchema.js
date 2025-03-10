@@ -2,62 +2,64 @@ import * as yup from "yup";
 
 export default [
   {
-    class: "row w-full lg:-mx-2",
-    fields: {
-      name: {
-        model: null,
+    class: "row w-full md:-mx-2",
+    fields: [
+      {
+        label: "First Name",
+        name: "name",
+        as: "input",
+        type: "text",
+        placeholder: "",
+        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        inputClass: "",
         rules: yup.string().required("First Name is a required field"),
-        label: "First Name*",
-        placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
-        inputClass: "",
-        component: "text",
-        type: "text",
       },
-      lastname: {
-        model: null,
+      {
+        label: "Last Name",
+        name: "lastname",
+        as: "input",
+        type: "text",
+        placeholder: "",
+        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        inputClass: "",
         rules: yup.string().required("Last Name is a required field"),
-        label: "Last Name*",
-        placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
-        inputClass: "",
-        component: "text",
-        type: "text",
       },
-      phone: {
-        model: null,
-        rules: yup.string().required("Phone is a required field"),
-        label: "Phone*",
-        placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
-        inputClass: "",
-        component: "text",
+      {
+        label: "Phone",
+        name: "phone",
+        as: "input",
         type: "text",
+        placeholder: "",
+        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        inputClass: "",
+        rules: yup
+          .number("Phone must be a number")
+          .integer("Phone must be a number")
+          .required("Phone is a required field")
+          .typeError("Phone must be a number"),
       },
-      email: {
-        model: null,
+      {
+        label: "Your Email",
+        name: "email",
+        as: "input",
+        type: "email",
+        placeholder: "",
+        elementClass: "flex flex-col relative w-full md:w-1/2 mb-8 px-2",
+        inputClass: "",
         rules: yup
           .string()
           .required("Email is a required field")
           .email("Email must be a valid format"),
-        label: "Email*",
-        placeholder: "",
-        elementClass: "flex flex-col relative w-full lg:w-1/2 mb-8 lg:px-2",
-        inputClass: "",
-        component: "text",
-        type: "text",
       },
-      message: {
-        model: null,
-        rules: yup.string().required("Your message is a required field"),
+      {
         label: "Message",
-        placeholder: "",
-        elementClass:
-          "flex flex-col relative w-full min-h-[8rem] h-[8rem] mx-2",
-        inputClass: "",
-        component: "textarea",
+        name: "message",
+        as: "textarea",
         type: "textarea",
+        placeholder: "",
+        elementClass: "flex flex-col relative w-full mb-8 px-2",
+        inputClass: "",
       },
-    },
+    ],
   },
 ];

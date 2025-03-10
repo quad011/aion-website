@@ -3,6 +3,14 @@ import componentsConfig from "./config/nuxt/components";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_PASS: process.env.EMAIL_PASS,
+    public: {
+      EMAIL_USER: process.env.NUXT_PUBLIC_EMAIL_USER, // only public ones go here
+    },
+  },
+
   prismic: {
     endpoint: apiEndpoint || repositoryName,
     clientConfig: {
@@ -40,10 +48,11 @@ export default defineNuxtConfig({
     ],
   },
 
-  // buildModules: ["@nuxtjs/proxy"],
-  // proxy: {
-  //   "/api": "http://localhost:3000",
-  // },
+  ssr: false,
+
+  build: {
+    transpile: ["vee-validate"],
+  },
 
   image: {
     imgix: {

@@ -1,27 +1,27 @@
 <script setup>
 const props = defineProps({
-  title: String,
-  text: Array,
+  title: {
+    type: String,
+  },
+  text: {
+    type: Array,
+  },
+  successMessage: {
+    type: Boolean,
+  },
 });
 
 const contactSchema = await import("./contactSchema.js");
 
-const endpoint = "/api/form/contact";
-
-const { isThankYou, submitForm, serverMessage } = useFormSubmit({
-  contactSchema,
-  endpoint,
-});
-
-const handleSubmitForm = async (formData) => {
-  await submitForm(formData);
+const handleThankYou = (value) => {
+  successMessage.value = value;
+  console.log("Received from child:", successMessage.value);
 };
-
-onMounted(() => {});
 </script>
 
 <template>
   <div
+    @successMessage="handleThankYou"
     class="o-contact-component lg:flex relative overflow-hidden px-4 lg:px-20 py-10 lg:py-20 bg-darkBlue text-white"
   >
     <div class="lg:w-1/2">
@@ -36,42 +36,31 @@ onMounted(() => {});
         <PrismicRichText
           :field="text"
           wrapper="div"
-          class="leading-[1.2] lg:pr-56 mb-20 lg:mb-52"
+          class="leading-[1.2] lg:pr-56 mb-20 lg:mb-0"
         />
       </c-animated-element>
     </div>
 
     <div class="lg:w-1/2 relative">
-      <f-generator
-        v-if="!isThankYou"
-        class="relative contact-form"
-        buttonWrapperClasses="w-1/2 lg:w-1/3 mt-10"
-        :default-classes="{
-          element: 'lg:flex relative',
-          errorMessage: 'text-12 absolute top-full left-0 text-red error-msg',
-          label: 'text-14',
-          inputWrapper: 'mb-5',
-        }"
-        :hideBtn="true"
-        @submit="handleSubmitForm"
-        :form-scheme="contactSchema.default"
-      >
-        <template #button="{ isValid }">
-          <a-button :title="'Send'" class="w-full" />
+      <c-animated-element :fromY="50" :toY="0" :delay="0.2">
+        <!-- FORM GENETATOR -->
+        <f-generator
+          class="contact-form"
+          v-if="!successMessage"
+          :schema="contactSchema"
+        >
+          <template #button>
+            <div class="w-1/2 lg:w-1/3">
+              <a-button title="Send" class="text-72 w-full" />
+            </div>
+          </template>
+        </f-generator>
+        <!-- END :: FORM GENETATOR -->
 
-          <p
-            v-if="serverMessage"
-            class="text-12 absolute top-full left-0 text-red error-msg"
-          >
-            {{ serverMessage }}
-          </p>
-        </template>
-      </f-generator>
-      <!-- END :: FORM GENETATOR -->
-
-      <div v-if="isThankYou" class="text-32 absolute center">
-        Thank you for your message!
-      </div>
+        <div v-if="successMessage" class="text-32 absolute center">
+          Thank you for your message!
+        </div>
+      </c-animated-element>
     </div>
   </div>
 </template>

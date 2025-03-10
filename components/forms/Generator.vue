@@ -2,12 +2,15 @@
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { ref } from "vue";
+
 const props = defineProps({
   schema: {
     type: Object,
     required: true,
   },
 });
+
+const emit = defineEmits(["formSuccess"]);
 
 const validationSchema = yup.object().shape(
   props.schema.default[0].fields.reduce((acc, field) => {
@@ -17,13 +20,8 @@ const validationSchema = yup.object().shape(
 );
 
 const isSubmitting = ref(false);
-const successMessage = ref("");
-const errorMessage = ref("");
-
-const submitForm = async (values) => {
+const submitForm = async (values, { resetForm }) => {
   isSubmitting.value = true;
-  successMessage.value = "";
-  errorMessage.value = "";
 
   try {
     const res = await fetch("/api/form/contact", {
@@ -35,28 +33,22 @@ const submitForm = async (values) => {
     });
 
     if (!res.ok) {
-      const errorData = await res.json().catch(() => null); // Catch any non-JSON errors
-      throw new Error(errorData?.message || "Failed to submit form");
+      throw new Error("Failed to submit form");
     }
 
     const data = await res.json();
-    console.log("✅ Response from API:", data);
-
     if (data.success) {
-      successMessage.value = "Email sent successfully!";
+      resetForm(); // Reset the form
+      emit("formSuccess", "Email sent successfully!"); // Emit success message
     } else {
-      errorMessage.value = data.message || "Something went wrong";
+      emit("formSuccess", "Something went wrong.");
     }
   } catch (error) {
-    console.error("❌ Error submitting form:", error);
-    errorMessage.value =
-      error.message || "An error occurred while submitting the form.";
+    emit("formSuccess", error.message || "An error occurred.");
   } finally {
     isSubmitting.value = false;
   }
 };
-
-onMounted(() => {});
 </script>
 
 <template>
@@ -77,11 +69,12 @@ onMounted(() => {});
       </div>
     </div>
 
-    <button type="submit" :disabled="isSubmitting">Submit</button>
-
-    <div v-if="successMessage" class="success-message">
-      {{ successMessage }}
-    </div>
-    <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <slot name="button">
+      <button
+        class="form__submit-button"
+        v-html="submitText"
+        type="submit"
+      ></button>
+    </slot>
   </Form>
 </template>

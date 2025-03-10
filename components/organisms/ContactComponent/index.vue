@@ -13,15 +13,18 @@ const props = defineProps({
 
 const contactSchema = await import("./contactSchema.js");
 
-const handleThankYou = (value) => {
-  successMessage.value = value;
-  console.log("Received from child:", successMessage.value);
+const successMessage = ref("");
+
+const handleFormSuccess = (message) => {
+  successMessage.value = message;
+  setTimeout(() => {
+    successMessage.value = ""; // Clear message after a few seconds
+  }, 3000);
 };
 </script>
 
 <template>
   <div
-    @successMessage="handleThankYou"
     class="o-contact-component lg:flex relative overflow-hidden px-4 lg:px-20 py-10 lg:py-20 bg-darkBlue text-white"
   >
     <div class="lg:w-1/2">
@@ -45,8 +48,8 @@ const handleThankYou = (value) => {
       <c-animated-element :fromY="50" :toY="0" :delay="0.2">
         <!-- FORM GENETATOR -->
         <f-generator
+          @formSuccess="handleFormSuccess"
           class="contact-form"
-          v-if="!successMessage"
           :schema="contactSchema"
         >
           <template #button>
@@ -57,7 +60,10 @@ const handleThankYou = (value) => {
         </f-generator>
         <!-- END :: FORM GENETATOR -->
 
-        <div v-if="successMessage" class="text-32 absolute center">
+        <div
+          v-if="successMessage"
+          class="text-32 absolute center w-full h-full flex justify-center items-center bg-darkBlue transition-all duration-500"
+        >
           Thank you for your message!
         </div>
       </c-animated-element>

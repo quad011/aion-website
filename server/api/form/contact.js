@@ -17,17 +17,40 @@ export default defineEventHandler(async (event) => {
       },
     });
 
+    const generateEmailContent = (body) => {
+      return `
+        <h2 style="color: #333;">New Contact Form Submission Details:</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 8px; background-color: #f4f4f4; border: 1px solid #ddd;">Field</th>
+              <th style="text-align: left; padding: 8px; background-color: #f4f4f4; border: 1px solid #ddd;">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${Object.entries(body)
+              .map(
+                ([key, value]) => `
+                  <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">${key.charAt(0).toUpperCase() + key.slice(1)}</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">${value}</td>
+                  </tr>
+                `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      `;
+    };
+
+    const emailContent = generateEmailContent(body);
+
     // Email options
     const mailOptions = {
       from: `"Aion website" <${process.env.EMAIL_USER}>`,
       to: "quad011@hotmail.com",
       subject: "New Form Submission",
-      text: `New Contact Form Submission Details:\n\n${Object.entries(body)
-        .map(
-          ([key, value]) =>
-            `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`
-        )
-        .join("\n")}`,
+      html: emailContent,
     };
 
     console.log("Sending email...");

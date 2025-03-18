@@ -1,16 +1,6 @@
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: #fff;
-  transition: background-color 5000s ease-in-out 0s;
-  box-shadow: inset 0 0 20px 20px #1a2766;
-}
-
 .contact-form {
   input {
-    @apply bg-transparent text-16 pb-4 mb-1 w-full rounded-none;
+    @apply bg-transparent text-16 pb-2 mb-1 w-full rounded-none;
     border-bottom: 1px solid theme("colors.white");
     &::placeholder {
       @apply text-16;
@@ -26,20 +16,69 @@ input:-webkit-autofill:active {
     }
   }
 
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #fff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #1a2766;
+  }
+}
+
+.solutions-form {
+  input,
+  select {
+    box-sizing: border-box;
+    @apply bg-transparent text-16 pb-2 mb-1 w-full rounded-none leading-none h-9;
+    border-bottom: 1px solid theme("colors.darkBlue");
+    &::placeholder {
+      @apply text-16;
+      color: theme("colors.darkBlue");
+    }
+  }
+  textarea {
+    border-bottom: 1px solid theme("colors.darkBlue");
+    @apply bg-transparent text-16 rounded-none pb-2 mb-1;
+    &::placeholder {
+      @apply text-16;
+      color: theme("colors.darkBlue");
+    }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #1a2766;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px transparent;
+    font-size: inherit;
+  }
+}
+
+.contact-form,
+.solutions-form {
   label {
     @apply text-16 font-medium;
 
     position: absolute;
-    left: 0.5rem;
-    top: 50%;
+    left: 0;
+    top: 0%;
     transform: translateY(-100%);
     transition:
       top 0.2s,
       font-size 0.2s;
 
-    &.active {
-      @apply text-14;
-      top: -10%;
+    @screen sm {
+      left: 0.5rem;
     }
+
+    // &.active {
+    //   @apply text-14;
+    //   top: -10%;
+    // }
   }
 }

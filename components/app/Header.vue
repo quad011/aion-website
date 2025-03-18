@@ -38,7 +38,7 @@ function scrollToTop() {
 // };
 
 onMounted(() => {
-  console.log("appdata", appData);
+  // console.log("appdata", appData);
   window.addEventListener("scroll", () => {
     if (window.scrollY === 0) {
       history.pushState(null, null, window.location.pathname);

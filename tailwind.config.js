@@ -15,7 +15,12 @@ export default {
     typography,
   ],
 
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  content: [
+    "./components/**/*.{vue,js}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./app.vue",
+  ],
   safelist: [
     "lg:items-end",
     {

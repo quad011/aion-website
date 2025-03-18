@@ -62,7 +62,7 @@ const handleFormSuccess = (message) => {
         <!-- END :: FORM GENETATOR -->
 
         <div
-          v-if="true"
+          v-if="successMessage"
           class="text-32 absolute center text-center w-[120%] h-[120%] flex justify-center items-center bg-darkBlue transition-all duration-500"
         >
           Thank you for your message!

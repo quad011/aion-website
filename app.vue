@@ -35,7 +35,7 @@ onMounted(async () => {
 
 <template>
   <div class="app h-full w-full">
-    <NuxtLayout class="w-full h-full bg-white2">
+    <NuxtLayout class="w-full h-full bg-white">
       <NuxtPage class="w-full h-full" />
     </NuxtLayout>
   </div>

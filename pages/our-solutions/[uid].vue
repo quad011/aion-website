@@ -125,7 +125,7 @@ usePageMeta(page);
 
         <div
           v-if="successMessage"
-          class="text-32 absolute center text-center w-full h-full flex justify-center items-center bg-darkBlue transition-all duration-500"
+          class="text-32 absolute center text-center w-full h-[108%] flex justify-center items-center bg-white transition-all duration-500"
         >
           Thank you for your message!
         </div>

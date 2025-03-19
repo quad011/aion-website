@@ -179,7 +179,7 @@ onMounted(() => {
           </Field>
           <ErrorMessage
             :name="name"
-            class="absolute left-2 top-full text-14 text-red"
+            class="absolute left-0 sm:left-2 top-full text-14 text-red"
           />
         </div>
         <!-- REGULAR FIELDS -->

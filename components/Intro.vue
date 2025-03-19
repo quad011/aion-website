@@ -1,25 +1,25 @@
 <script setup>
-import { gsap } from 'gsap';
+import { gsap } from "gsap";
 
 const progress = ref({ value: 0 });
-const emit = defineEmits(['update:introVisible']);
+const emit = defineEmits(["update:introVisible"]);
 
 const computedProgress = computed(() => {
   if (progress.value.value === 0) return [0];
-  return `${Math.round(progress.value.value)}`.split('');
+  return `${Math.round(progress.value.value)}`.split("");
 });
 
 // Use GSAP animation
 onMounted(() => {
   gsap.to(progress.value, {
     value: 100,
-    ease: 'power2.inOut',
+    ease: "power2.inOut",
     duration: 2,
     onComplete: () => {
       // console.log('animation ended');
 
       setTimeout(() => {
-        emit('update:introVisible', false);
+        emit("update:introVisible", false);
       }, 600);
     },
   });
@@ -37,24 +37,56 @@ onMounted(() => {
     <div class="flex justify-center items-center h-full relative">
       <div
         :style="{
-          transform: `translateX(-${100 - progress.value}%) `,
-          opacity: `${progress.value}`,
+          transform: `translateX(-${100 - progress.value}em)`,
+          opacity: `${progress.value / 100}`,
         }"
       >
-        <h1 class="text-24 sm:text-40 lg:text-92 text-black text-bold">
-          Welcome
-        </h1>
+        <img
+          src="/svg/a.svg"
+          class="h-[5.2em] w-auto object-contain"
+          alt="aion"
+        />
+      </div>
+
+      <div
+        class="mx-5"
+        :style="{
+          transform: `translateY(${100 - progress.value}em)`,
+          opacity: `${progress.value / 100}`,
+        }"
+      >
+        <img
+          src="/svg/i.svg"
+          class="h-[5em] w-auto object-contain"
+          alt="aion"
+        />
+      </div>
+
+      <div
+        class="mr-5"
+        :style="{
+          transform: `translateY(-${100 - progress.value}em)`,
+          opacity: `${progress.value / 100}`,
+        }"
+      >
+        <img
+          src="/svg/o.svg"
+          class="h-[5em] w-auto object-contain"
+          alt="aion"
+        />
       </div>
 
       <div
         :style="{
-          transform: `translateX(${100 - progress.value}%) `,
-          opacity: `${progress.value}`,
+          transform: `translateX(${100 - progress.value}em)`,
+          opacity: `${progress.value / 100}`,
         }"
       >
-        <h1 class="text-24 sm:text-40 lg:text-92 text-black text-bold">
-          &nbsp;to my resume
-        </h1>
+        <img
+          src="/svg/n.svg"
+          class="h-[5em] w-auto object-contain"
+          alt="aion"
+        />
       </div>
     </div>
   </div>

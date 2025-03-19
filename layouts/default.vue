@@ -51,7 +51,7 @@ onMounted(() => {});
         ease: 'Power2.easeOut',
       }"
     >
-      <!-- <intro v-model:introVisible="introVisible" v-if="introVisible" /> -->
+      <intro v-model:introVisible="introVisible" v-if="introVisible" />
     </t-gsap>
     <!-- END :: INTRO -->
   </div>

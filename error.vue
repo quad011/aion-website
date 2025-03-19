@@ -1,10 +1,15 @@
 <script setup>
+import { useHead } from "#imports";
 const error = useError();
 const props = defineProps({
   error: Object,
 });
 
 const handleError = () => clearError({ redirect: "/" });
+
+useHead({
+  title: "Aion - 404 Not Found",
+});
 </script>
 
 <template>
@@ -20,7 +25,7 @@ const handleError = () => clearError({ redirect: "/" });
       <c-animated-element :fromY="-50" :toY="0">
         <img
           src="/svg/a.svg"
-          class="h-[.75em] w-auto object-contain mx-1"
+          class="h-[.75em] w-auto object-contain mx-1 spiner"
           alt="aion"
         />
       </c-animated-element>
@@ -37,3 +42,17 @@ const handleError = () => clearError({ redirect: "/" });
     </c-animated-element>
   </div>
 </template>
+
+<style lang="scss">
+.spiner {
+  animation: rotate-div 3s infinite ease-in-out;
+}
+@keyframes rotate-div {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(-360deg);
+  }
+}
+</style>

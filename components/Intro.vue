@@ -43,7 +43,7 @@ onMounted(() => {
       >
         <img
           src="/svg/a.svg"
-          class="h-[5.2em] w-auto object-contain"
+          class="h-[2em] sm:h-[5.2em] w-auto object-contain"
           alt="aion"
         />
       </div>
@@ -57,7 +57,7 @@ onMounted(() => {
       >
         <img
           src="/svg/i.svg"
-          class="h-[5em] w-auto object-contain"
+          class="h-[2em] sm:h-[5em] w-auto object-contain"
           alt="aion"
         />
       </div>
@@ -71,7 +71,7 @@ onMounted(() => {
       >
         <img
           src="/svg/o.svg"
-          class="h-[5em] w-auto object-contain"
+          class="h-[2em] sm:h-[5em] w-auto object-contain"
           alt="aion"
         />
       </div>
@@ -84,7 +84,7 @@ onMounted(() => {
       >
         <img
           src="/svg/n.svg"
-          class="h-[5em] w-auto object-contain"
+          class="h-[2em] sm:h-[5em] w-auto object-contain"
           alt="aion"
         />
       </div>

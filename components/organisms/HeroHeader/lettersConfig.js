@@ -1,6 +1,6 @@
 export default {
   0: {
-    img: "/svg/a.svg",
+    img: "/svg/octagon.svg",
     class: "top-[18%] -left-[5%]",
   },
   1: {

@@ -29,7 +29,7 @@ onMounted(() => {
 <template>
   <div
     :style="{ height: heroHeight }"
-    class="o-hero-header flex items-end relative overflow-hidden text-white"
+    class="o-hero-header flex items-end relative overflow-hidden text-white "
   >
     <!-- BG IMAGE -->
     <div class="w-full h-full absolute left-0 top-0">

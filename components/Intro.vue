@@ -4,11 +4,6 @@ import { gsap } from "gsap";
 const progress = ref({ value: 0 });
 const emit = defineEmits(["update:introVisible"]);
 
-const computedProgress = computed(() => {
-  if (progress.value.value === 0) return [0];
-  return `${Math.round(progress.value.value)}`.split("");
-});
-
 // Use GSAP animation
 onMounted(() => {
   gsap.to(progress.value, {
@@ -24,9 +19,7 @@ onMounted(() => {
     },
   });
 
-  setTimeout(() => {
-    // console.log('progress:', computedProgress.value);
-  }, 1000);
+  setTimeout(() => {}, 1000);
 });
 </script>
 
